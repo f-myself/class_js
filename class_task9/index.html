@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <calendar></calendar>
+    </div>
+
+    <script type="text/template" id="template">
+        
+    </script>  
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        Vue.component('calendar', {
+            template: `
+                        <table id="calendar2">
+                        <thead>
+                            <tr>
+                                <td>‹</td>
+                                <td colspan="5" >{{ showMonth(currentMonth()) }}</td>
+                                <td @click="nextMonth">›</td>
+                            </tr>
+                            <tr>
+                                <td>Mon</td>
+                                <td>Tue</td>
+                                <td>Wed</td>
+                                <td>Thu</td>
+                                <td>Fri</td>
+                                <td>Sat</td>
+                                <td>Sun</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>`,
+            data: function(){
+                return {
+                    date: new Date(),
+                    monthes: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'October', 'December'],
+                    selectedMonth: 0,
+                    days: [],
+                    message: 'Hello'
+                }
+            },
+            methods: {
+                    currentMonth: function(){
+                        var currentMonth = this.date.getMonth();
+                        return currentMonth;
+                    },
+                    showMonth: function(month){
+                        this.selectedMonth = month;
+                        return this.monthes[month];
+                    },
+                    nextMonth: function(){
+                        this.selectedMonth += 1;
+                    },
+                    prevMonth(){
+
+                    }
+                }
+        });
+
+        var app = new Vue({
+            el: '#app'
+        })
+    </script>
+    
+</body>
+</html>
