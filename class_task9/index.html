@@ -122,6 +122,17 @@
                             })
                         }
                     }
+                    
+                },
+                formatFirstWeek: function(){
+                	//console.log(this.days[0].length)
+                	for(var i = this.days[0].length; i < 7; i++){
+                		console.log(i);
+                    	this.days[0].unshift({
+                    		dayNum: undefined, 
+                    		dayWeek: i
+                    	});
+                    }
                 }
             },
             computed: {
@@ -130,6 +141,7 @@
                     this.getLastWeekDay();
                     this.getLastDay();
                     this.getMonthesDays();
+                    this.formatFirstWeek();
                 },
                 monthYear: function(){
                     this.days = [];
